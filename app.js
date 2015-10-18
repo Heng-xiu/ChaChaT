@@ -23,11 +23,15 @@ if(env === 'development'){
 	// development specific settings
 	app.use(session({
 		secret: 'catscanfly',
+		resave: true,
+		saveUninitialized: true,
 	}));
 } else {
 	// production specific settings
 	app.use(session({
 		secret: 'catscanfly',
+		resave: true,
+		saveUninitialized: true,
 	}));
 }
 // Route

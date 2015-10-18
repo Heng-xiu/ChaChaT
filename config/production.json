@@ -1,0 +1,4 @@
+{
+	"dbURL": "mongodb://user:user@ds041164.mongolab.com:41164/chatroom",
+	"sessionSecret": "Youwontseeit"
+}
