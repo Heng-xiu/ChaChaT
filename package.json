@@ -4,7 +4,8 @@
   "description": "Fantasy-chatting room",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,8 @@
   },
   "homepage": "https://github.com/Heng-xiu/ChaChaT#readme",
   "dependencies": {
-    "express": "~4.13.3"
+    "express": "~4.13.3",
+    "hogan-express": "~0.5.2"
   },
   "devDependencies": {
     "mocha": "~2.3.3",
