@@ -31,9 +31,13 @@ if(env === 'development'){
 } else {
 	// production specific settings
 	app.use(session({
-		secret: 'catscanfly',
+		secret: config.sessionSecret,
 		resave: true,
 		saveUninitialized: true,
+		store: new connectMongo({
+			url: config.dbURL,
+			stringify: true,
+		}),
 	}));
 }
 // Route
