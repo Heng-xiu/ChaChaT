@@ -1,0 +1,22 @@
+{
+  "name": "cha-cha-t",
+  "version": "1.0.0",
+  "description": "Fantasy-chatting room",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heng-xiu/ChaChaT.git"
+  },
+  "keywords": [
+    "heroku"
+  ],
+  "author": "xiu-xiu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Heng-xiu/ChaChaT/issues"
+  },
+  "homepage": "https://github.com/Heng-xiu/ChaChaT#readme"
+}
