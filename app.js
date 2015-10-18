@@ -3,9 +3,9 @@ var app = express();
 var port = 3000;
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var session = require('express-session');
 var config = require('./config/config.js');
-var connectMongo = require('connect-mongo')(session);
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 // Set view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -34,7 +34,7 @@ if(env === 'development'){
 		secret: config.sessionSecret,
 		resave: true,
 		saveUninitialized: true,
-		store: new connectMongo({
+		store: new MongoStore({
 			url: config.dbURL,
 			stringify: true,
 		}),
