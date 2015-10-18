@@ -4,6 +4,7 @@ var port = 3000;
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var config = require('./config/config.js');
 
 // Set view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -20,8 +21,14 @@ app.use(session({
 var env = process.env.NODE_ENV || 'development';
 if(env === 'development'){
 	// development specific settings
+	app.use(session({
+		secret: 'catscanfly',
+	}));
 } else {
 	// production specific settings
+	app.use(session({
+		secret: 'catscanfly',
+	}));
 }
 // Route
 require('./routes/route.js')(express, app);
