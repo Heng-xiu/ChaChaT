@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var config = require('./config/config.js');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+var mongoose = require('mongoose').connect(config.dbURL);
 
 // Set view engine
 app.set('views', path.join(__dirname, 'views'));
