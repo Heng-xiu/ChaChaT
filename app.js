@@ -8,7 +8,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose').connect(config.dbURL);
 var passport = require('passport');
-var facebookStrategy = require('passport-facebook').Stratrgy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 
 // Set view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -62,7 +62,7 @@ if(env === 'development'){
 // 	console.log('Done !');
 // });
 // passport
-require('./auth/passportAuth.js')(passport, facebookStrategy, config, mongoose);
+require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose);
 // Route
 require('./routes/route.js')(express, app);
 
