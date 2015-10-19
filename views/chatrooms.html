@@ -3,7 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<title>Welcome to ChaChaT</title>
-	<!-- <link rel="stylesheet" href="../css/chatrooms.css"> -->
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="./socket.io/socket.io.js"></script>
+	<script>
+	$(function(){
+		var host = '{{config.host}}';
+		var socket = io.connect(host + '/roomlist');
+		socket.on('connect', function(){
+			console.log('Connecttion is Established!');
+		});
+	})
+	</script>
 </head>
 <body>
 	<h1>Hello world</h1>

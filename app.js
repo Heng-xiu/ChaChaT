@@ -9,6 +9,7 @@ var MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose').connect(config.dbURL);
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
+var rooms = [];
 
 // Set view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -52,9 +53,14 @@ app.use(passport.session());
 // passport
 require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose);
 // Route
-require('./routes/route.js')(express, app, passport);
+require('./routes/route.js')(express, app, passport, config);
 
-app.listen(port, function() {
-	console.log('ChaChaT is working on Port ' + port);
+//socket.io
+app.set('port', process.env.PORT || 3000);
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+require('./socket.io/socket.io.js')(io, rooms);
+server.listen(app.get('port'), function(){
+	console.log('ChaChat on port : ' + app.get('port'));
 	console.log('Mode: ' + env);
 });

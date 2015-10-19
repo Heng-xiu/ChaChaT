@@ -1,4 +1,4 @@
-module.exports = function(express, app, passport){
+module.exports = function(express, app, passport, config){
 	var router = express.Router();
 
 	router.get('/', function( req, res, next){
@@ -20,7 +20,7 @@ module.exports = function(express, app, passport){
 	}));
 
 	router.get('/chatrooms', securePages, function(req, res, next) {
-		res.render('chatrooms', {user: req.user});
+		res.render('chatrooms', {user: req.user, config: config});
 	});
 
 	// session
