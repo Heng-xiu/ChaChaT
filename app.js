@@ -42,6 +42,23 @@ if(env === 'development'){
 		}),
 	}));
 }
+// connect mongodb
+var userSchema = mongoose.Schema({
+	username: String,
+	password: String,
+	fullname: String,
+});
+var Person = mongoose.model('users', userSchema);
+var John = new Person({
+	username: 'johndone',
+	password: 'johndone',
+	fullname: 'John Done',
+});
+
+John.save(function(err) {
+	console.log('Done !');
+});
+
 // Route
 require('./routes/route.js')(express, app);
 
