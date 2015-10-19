@@ -37,27 +37,28 @@ if(env === 'development'){
 		resave: true,
 		saveUninitialized: true,
 		store: new MongoStore({
-			url: config.dbURL,
+			// url: config.dbURL,
+			mongooseConnection:mongoose.connections[0],
 			stringify: true,
 		}),
 	}));
 }
 // connect mongodb
-var userSchema = mongoose.Schema({
-	username: String,
-	password: String,
-	fullname: String,
-});
-var Person = mongoose.model('users', userSchema);
-var John = new Person({
-	username: 'johndone',
-	password: 'johndone',
-	fullname: 'John Done',
-});
-
-John.save(function(err) {
-	console.log('Done !');
-});
+// var userSchema = mongoose.Schema({
+// 	username: String,
+// 	password: String,
+// 	fullname: String,
+// });
+// var Person = mongoose.model('users', userSchema);
+// var John = new Person({
+// 	username: 'johndone',
+// 	password: 'johndone',
+// 	fullname: 'John Done',
+// });
+//
+// John.save(function(err) {
+// 	console.log('Done !');
+// });
 
 // Route
 require('./routes/route.js')(express, app);
