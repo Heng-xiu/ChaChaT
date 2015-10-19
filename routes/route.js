@@ -34,7 +34,7 @@ module.exports = function(express, app, passport){
 		+ (req.session.favColor === undefined ? "Not found" : req.session.favColor));
 	});
 
-	router.get('logout', function(req, res, next){
+	router.get('/logout', function(req, res, next){
 		req.logout();
 		res.redirect('/');
 	});
