@@ -5,9 +5,16 @@ module.exports = function(passport, FacebookStrategy, config, mongoose){
 		profilePic: String,
 	});
 	var userModel = mongoose.model('chatUser', chatUser);
+	// user and seccion
 	passport.serializeUser(function(user, done){
 		done(null, user.id);
 	});
+	passport.deserializeUser(function(id, done){
+		userModel.findById(id, function(err, user){
+			done(err, user);
+		});
+	});
+	// FacebookStrategy
 	passport.use(new FacebookStrategy({
 		clientID: config.fb.appID,
 		clientSecret: config.fb.appSecret,

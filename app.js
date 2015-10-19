@@ -45,26 +45,11 @@ if(env === 'development'){
 		}),
 	}));
 }
-// connect mongodb
-// var userSchema = mongoose.Schema({
-// 	username: String,
-// 	password: String,
-// 	fullname: String,
-// });
-// var Person = mongoose.model('users', userSchema);
-// var John = new Person({
-// 	username: 'johndone',
-// 	password: 'johndone',
-// 	fullname: 'John Done',
-// });
-//
-// John.save(function(err) {
-// 	console.log('Done !');
-// });
+
 // passport
 require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose);
 // Route
-require('./routes/route.js')(express, app);
+require('./routes/route.js')(express, app, passport);
 
 app.listen(port, function() {
 	console.log('ChaChaT is working on Port ' + port);

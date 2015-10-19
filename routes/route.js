@@ -1,9 +1,11 @@
-module.exports = function(express, app){
+module.exports = function(express, app, passport){
 	var router = express.Router();
 
 	router.get('/', function( req, res, next){
 		res.render('index', {});
 	});
+
+	router.get('/auth/facebook', passport.authenticate('facebook'));
 
 	router.get('/chatrooms', function(req, res, next) {
 		res.render('chatrooms', {});
