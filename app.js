@@ -45,7 +45,10 @@ if(env === 'development'){
 		}),
 	}));
 }
-
+// passport init
+app.use(passport.initialize());
+// passport session
+app.use(passport.session());
 // passport
 require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose);
 // Route

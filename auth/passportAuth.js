@@ -20,7 +20,7 @@ module.exports = function(passport, FacebookStrategy, config, mongoose){
 		clientSecret: config.fb.appSecret,
 		callbackURL: config.fb.callbackURL,
 		profileFields: ['id', 'displayName', 'photos'],
-	}, function(accessToken, refreshToken, profile, don) {
+	}, function(accessToken, refreshToken, profile, done) {
 		// check use is already in our mongodb
 		// if not, create one and return profile
 		// if exist, simply return the profile

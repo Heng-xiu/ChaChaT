@@ -4,11 +4,15 @@ module.exports = function(express, app, passport){
 	router.get('/', function( req, res, next){
 		res.render('index', {});
 	});
-
+	// facebook
 	router.get('/auth/facebook', passport.authenticate('facebook'));
+	router.get('/auth/facebook/callback', passport.authenticate('facebook', {
+		successRedirect: '/chatrooms',
+		failureRedirect: '/',
+	}));
 
 	router.get('/chatrooms', function(req, res, next) {
-		res.render('chatrooms', {});
+		res.render('chatrooms', {user: req.user});
 	});
 
 	// session
