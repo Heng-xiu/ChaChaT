@@ -1,4 +1,10 @@
 {
 	"dbURL": "mongodb://user:user@ds041164.mongolab.com:41164/chatroom",
-	"sessionSecret": "Youwontseeit"
+	"sessionSecret": "Youwontseeit",
+	"fb": {
+		"appID": "1518760068434349",
+		"appSecret": "ffacfa87d463644dcaf2b802ee25fbd8",
+		"apiVersion": "v2.5",
+		"callbackURL": "http://localhost:3000/auth/facebook/callback"
+	}
 }
