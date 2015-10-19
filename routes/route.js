@@ -4,6 +4,14 @@ module.exports = function(express, app, passport){
 	router.get('/', function( req, res, next){
 		res.render('index', {});
 	});
+	// secure
+	function securePages(req, res, next){
+		if(req.isAuthenticated()){
+			next();
+		} else {
+			res.redirect('/');
+		}
+	};
 	// facebook
 	router.get('/auth/facebook', passport.authenticate('facebook'));
 	router.get('/auth/facebook/callback', passport.authenticate('facebook', {
@@ -11,7 +19,7 @@ module.exports = function(express, app, passport){
 		failureRedirect: '/',
 	}));
 
-	router.get('/chatrooms', function(req, res, next) {
+	router.get('/chatrooms', securePages, function(req, res, next) {
 		res.render('chatrooms', {user: req.user});
 	});
 
