@@ -8,9 +8,9 @@
 	<script>
 	$(function(){
 		var host = '{{config.host}}';
-		var socket = io.connect(host + '/roomlist');
-		socket.on('connect', function(){
-			console.log('Connecttion is Established!');
+		var socket = io.connect(host + '/roomlist');// localhost:3000/roomlist
+		socket.on('connection', function(){
+			console.log('[html]Connecttion is Established!');
 		});
 	})
 	</script>
