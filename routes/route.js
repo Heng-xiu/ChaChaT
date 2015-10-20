@@ -23,6 +23,29 @@ module.exports = function(express, app, passport, config){
 		res.render('chatrooms', {user: req.user, config: config});
 	});
 
+	router.get('/room/:id', function(req, res, next){
+		var room_name = findTitle(req.params.id);
+		res.render('room', {
+			user: req.user,
+			room_number: req.params.id,
+			room_name: room_name,
+			config: config,
+		});
+	});
+
+	function findTitle(room_id){
+		var n = 0;
+		while(n < rooms.length){
+			if(rooms[n].room_number === room_id){
+				return rooms[n].room_name;
+				break;
+			} else {
+				n++;
+				continue;
+			}
+		}
+	}
+
 	// session
 	router.get('/setcolor', function(req, res, next){
 		req.session.favColor = "RED";
