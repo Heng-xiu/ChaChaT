@@ -53,7 +53,7 @@ app.use(passport.session());
 // passport
 require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose);
 // Route
-require('./routes/route.js')(express, app, passport, config);
+require('./routes/route.js')(express, app, passport, config, rooms);
 
 //socket.io
 app.set('port', process.env.PORT || 3000);
