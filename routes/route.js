@@ -36,9 +36,9 @@ module.exports = function(express, app, passport, config, rooms){
 	function findTitle(room_id){
 		var n = 0;
 		while(n < rooms.length){
-			if(rooms[n].room_number === room_id){
+			if(rooms[n].room_number == room_id){
 				return rooms[n].room_name;
-				break;
+				// break;
 			} else {
 				n++;
 				continue;
