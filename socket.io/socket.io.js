@@ -10,4 +10,8 @@ module.exports = function(io, rooms) {
 			socket.emit('roomupdate', JSON.stringify(rooms));
 		});
 	});
+
+	var message = io.of('/messages').on('connection', function(socket) {
+		console.log('[socket.js/m]messages !');
+	});
 };
