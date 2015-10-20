@@ -9,8 +9,8 @@
 	$(function(){
 		var host = '{{config.host}}';
 		var socket = io.connect(host + '/roomlist');// localhost:3000/roomlist
-		socket.on('connection', function(){
-			console.log('[html]Connecttion is Established!');
+		socket.on('connect', function(){
+			console.log('[chatrooms.html]Connecttion is Established!');
 		});
 	})
 	</script>
