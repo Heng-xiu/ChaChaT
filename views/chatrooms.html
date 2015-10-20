@@ -9,17 +9,44 @@
 	$(function(){
 		var host = '{{config.host}}';
 		var socket = io.connect(host + '/roomlist');// localhost:3000/roomlist
+		// socket 連線
 		socket.on('connect', function(){
 			console.log('[chatrooms.html]Connecttion is Established!');
+		});
+		// 更新 roomlist
+		socket.on('roomupdate', function(data){
+			var procData = JSON.parse(data);
+			$('.roomlist').html('');
+			for(var i = 0; i < procData.length; i++){
+				var str = '<a href="room/' + procData[i].room_number + '"><li>' + procData[i].room_name + '</li></a>'
+				$('.roomlist').prepend(str);
+			}
+		});
+		// create new room
+		$(document).on('click', '#create', function(){
+			var room_name = $('.newRoom').val();
+			if(room_name != ''){
+				var room_number = parseInt(Math.random() + 10000);
+				socket.emit('newroom', {room_name: room_name, room_number: room_number});
+				$('.newRoom').val('');
+			}
 		});
 	})
 	</script>
 </head>
 <body>
 	<h1>Hello world</h1>
+	<a href="/logout">Logout</a>
 	<p>[views/chatrooms.html]</p>
 	<img src={{user.profilePic}}>
 	<p>{{user.fullname}}</p>
-	<a href="/logout">Logout</a>
+	<div>
+		<input type="text" class="newRoom" autocomplete="off">
+		<button id="create">Create Room</button>
+	</div>
+	<div>
+		<ul class="roomlist">
+		</ul>
+	</div>
 </body>
 </html>
