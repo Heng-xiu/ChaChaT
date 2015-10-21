@@ -5,7 +5,7 @@
 		"appID": "1518760068434349",
 		"appSecret": "ffacfa87d463644dcaf2b802ee25fbd8",
 		"apiVersion": "v2.5",
-		"callbackURL": "http://localhost:3000/auth/facebook/callback"
+		"callbackURL": "http://cha-cha-t.herokuapp.com/auth/facebook/callback"
 	},
-	"host": ""
+	"host": "http://cha-cha-t.herokuapp.com"
 }
