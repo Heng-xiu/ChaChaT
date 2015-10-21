@@ -26,7 +26,7 @@
 		$(document).on('click', '#create', function(){
 			var room_name = $('.newRoom').val();
 			if(room_name != ''){
-				var room_number = parseInt(Math.random() + 10000);
+				var room_number = parseInt(Math.random() * 10000);
 				socket.emit('newroom', {room_name: room_name, room_number: room_number});
 				$('.newRoom').val('');
 			}
