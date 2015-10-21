@@ -47,7 +47,7 @@
 					str += '<div><img src="' + userPic + '"></div>';
 					str += '<div><p>' + message + '</p><div>';
 					str += '</li>';
-				$(str).prependTo($('.messages'));
+				$(str).hide().prependTo($('.messages')).slideDown(100);
 			};
 		});
 	</script>
