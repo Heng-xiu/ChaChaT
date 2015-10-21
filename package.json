@@ -12,7 +12,8 @@
     "url": "git+https://github.com/Heng-xiu/ChaChaT.git"
   },
   "keywords": [
-    "heroku"
+    "heroku",
+    "socket.io"
   ],
   "author": "xiu-xiu",
   "license": "MIT",
