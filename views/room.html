@@ -15,7 +15,40 @@
 
 			messages.on('connect', function() {
 				console.log('[room.html]Connecttion Established !!');
+				messages.emit('joinroom', {
+					roomNum: roomNum,
+					userName: userName,
+					uesrPic: userPic,
+				});
 			});
+
+			$(document).on('keyup', '.newmessage', function(event){
+				if(event.which === 13 && $(this).val() != ''){
+					// push 'enter'
+					messages.emit('newMessage', {
+						room_number: roomNum,
+						userName: userName,
+						userPic: userPic,
+						message: $(this).val(),
+					});
+					updateMessageFeed(userPic, $(this).val());
+					$(this).val('');
+				}
+			});
+
+			messages.on('messagefeed', function(data){
+				var msgs = JSON.parse(data);
+				updateMessageFeed(msgs.userPic, msgs.message);
+			});
+
+			function updateMessageFeed(userPic, message){
+				var str = '<li>';
+					str += '<div>';
+					str += '<div><img src="' + userPic + '"></div>';
+					str += '<div><p>' + message + '</p><div>';
+					str += '</li>';
+				$(str).prependTo($('.messages'));
+			};
 		});
 	</script>
 </head>
@@ -25,7 +58,13 @@
 	<a href="/logout">Logout</a>
 	<img src={{user.profilePic}}>
 	<p>{{user.fullname}}</p>
-	<p>{{room_name}}</p>
-	<p>{{room_number}}</p>
+	<p>[Room name]{{room_name}}</p>
+	<p>[Room number]{{room_number}}</p>
+	<div>
+		<ul class="messages">
+		</ul>
+	</div>
+	<p>Type message</p>
+	<input type="text" class="newmessage" autocomplete="off" placeholder="Type">
 </body>
 </html>

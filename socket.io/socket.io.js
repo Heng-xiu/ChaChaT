@@ -11,7 +11,16 @@ module.exports = function(io, rooms) {
 		});
 	});
 
-	var message = io.of('/messages').on('connection', function(socket) {
+	var messages = io.of('/messages').on('connection', function(socket) {
 		console.log('[socket.js/m]messages !');
+		socket.on('joinroom', function(data){
+			socket.userName = data.userName;
+			socket.userPic = data.userPic;
+			socket.join(data.roomNum);
+		});
+
+		socket.on('newMessage', function(data){
+			socket.broadcast.to(data.room_number).emit('messagefeed', JSON.stringify(data));
+		});
 	});
 };
